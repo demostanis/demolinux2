@@ -23,4 +23,11 @@ exit 1
 EOC
 }
 
+expectfocus() {
+	./dctrl shell<<EOC
+name=\$(awesome-client 'return client.focus.name' | cut -d\" -f2)
+[ "\$name" = "$1" ]
+EOC
+}
+
 # vim:set ft=bash:

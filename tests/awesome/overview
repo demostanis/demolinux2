@@ -1,0 +1,17 @@
+#!/bin/bash
+
+./dctrl shell <<eoc
+yad --title="window 1" &
+yad --title="window 2" &
+eoc
+
+# TODO: modkeypress should be done inside ./dctrl shell,
+# or maybe tests should always be run inside the VM?
+#
+modkeypress o
+./dctrl shell "xdotool key f"
+expectfocus "window 1"
+
+modkeypress o
+./dctrl shell "xdotool key j"
+expectfocus "window 2"
